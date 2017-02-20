@@ -1,12 +1,20 @@
+int ledPin = 9;
+int buttonPin = 7;
+
 void setup() {
-  // put your setup code here, to run once:
-  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(ledPin, OUTPUT);
+  pinMode(buttonPin, INPUT);
+  digitalWrite(ledPin, LOW);
+  Serial.begin(9600);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  digitalWrite(LED_BUILTIN, HIGH);
-  delay(1000);
-  digitalWrite(LED_BUILTIN, LOW);
-  delay(1000);
+  int buttonStatus = digitalRead(buttonPin);
+  if (buttonStatus == HIGH) {
+    digitalWrite(ledPin, HIGH);    
+    Serial.println("HIGH");
+  } else {
+    digitalWrite(ledPin, LOW);       
+    Serial.println("LOW");
+  }
 }
